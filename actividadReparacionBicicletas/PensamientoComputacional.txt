@@ -10,16 +10,13 @@ Abstracción:
 *TallerBicicletas
 *clientes 
 -datosBasicos
-
 *bicicletas 
 -descripcion del problema
 -fecha de ingreso
 -estado
-
 *ordenes de servicio
 -mecanico
 -listaTareas
-
 *mecanicos
 *repuestos
 
