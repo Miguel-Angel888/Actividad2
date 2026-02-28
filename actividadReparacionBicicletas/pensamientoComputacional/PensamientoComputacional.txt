@@ -8,6 +8,7 @@ Abstracción:
 ¿Qué información es relevante dado el problema anterior?
 
 *TallerBicicletas
+-nombre
 *clientes 
 -datosBasicos
 *bicicletas 
