@@ -1,0 +1,40 @@
+Abstracción: 
+
+¿Qué se solicita finalmente? (problema)
+
+*Desarrollar un programa que permita organizar la inmformacion para llevar 
+ control de cliente, bicicletas, ordenes de servicio, mecanicos y repuestos utilizados
+
+¿Qué información es relevante dado el problema anterior?
+
+*TallerBicicletas
+*clientes 
+-datosBasicos
+
+*bicicletas 
+-descripcion del problema
+-fecha de ingreso
+-estado
+
+*ordenes de servicio
+-mecanico
+-listaTareas
+
+*mecanicos
+*repuestos
+
+¿Cómo se agrupa la información relevante?
+¿Qué funcionalidades se necesitan?
+
+*registrarDatos
+*vincularBicicleta
+*crearOrden
+*asignarMecanico
+*cambiarMecanico
+*anadirListaTareas
+*añadirRepuestos
+*calcularCostoTotal
+*cambiarEstadoOrden
+
+Descomposición: 
+¿Cómo se distribuyen las funcionalidades?
