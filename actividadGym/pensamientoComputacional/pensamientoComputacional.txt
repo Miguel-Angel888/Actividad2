@@ -1,0 +1,71 @@
+Abstracción: 
+
+¿Qué se solicita finalmente? (problema)
+
+*Desarrollar un programa que permita digitalizar la informacion de la operacion de un gym de barrio
+ respecto a los socios,entrenadores,membresias,clases grupales y reservas
+
+¿Qué información es relevante dado el problema anterior?
+
+*Gym
+-nombre
+*Socios
+-datosPersonales(nombre,id,membresiaActiva)
+*Entrenadores
+-claseGrupal
+*Membresias
+-tipo
+-fechaInicio
+-fechaFin
+-precio
+*ClasesGrupales
+-nombre
+-cupoMaximo
+-horario
+*Reservas
+-socio
+*HistorialPagos
+-fecha
+-valor
+-metodo
+
+¿Cómo se agrupa la información relevante?
+
+*La información se agrupa en clases 
+ (Gym,socios,entrenadores,membresias,clases y reservas), las cuales están ubicadas 
+ en la ruta (pensamientoComputacional-diagramaClasesGym)donde se encuentra el diagrama de clases.
+
+¿Qué funcionalidades se necesitan?
+
+*registrarSocios
+*RegistrarEntrenadores
+*RegistrarMembresia
+*RegistrarReservas
+*RegistrarHistorialPagos
+*consultarClasesEntrenador
+*consultarSociosMembresiaVencida
+*concultarSociosMembresiaCasivencida
+*getNombre
+*setNombre
+*getId
+*setId
+*getMembresiaActiva
+*getFecha
+*getValor
+*getMetodo
++getCupoMaximo
++setCupoMaximo
++getHorario
++setHorario
++getEntrenador
+
+
+
+
+Descomposición: 
+
+¿Cómo se distribuyen las funcionalidades?
+
+*Las funcionalidades se distribuyen entre las clases 
+ del modelo (ubicadas en la ruta (pensamientoComputacional-diagramaClasesGym), donde cada 
+ clase tiene responsabilidades específicas según el diagrama de clases.
