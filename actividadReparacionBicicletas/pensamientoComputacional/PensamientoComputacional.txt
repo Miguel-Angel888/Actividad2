@@ -9,36 +9,59 @@ Abstracción:
 
 *TallerBicicletas
 -nombre
-*clientes 
--datosBasicos
-*bicicletas 
--descripcion del problema
--fecha de ingreso
+*Cliente
+-identificacion
+*Orden de Serivio
+-descripcionProblema
+-fechaIngreso
 -estado
-*ordenes de servicio
--mecanico
--listaTareas
-*mecanicos
-*repuestos
+*Mecanico
+*Bicicleta
+-marca
+-modelo
+*Tarea
+-descripciontarea
+-costoManoObra
+*Repuesto
+-cantidad
+-costoUnitario
 
 ¿Cómo se agrupa la información relevante?
 
-*Se encuentra en la carpeta model
+*La información se agrupa en clases 
+ (Cliente, Bicicleta, OrdenServicio, Mecánico, Repuesto, Tarea), las cuales están ubicadas 
+ en la ruta (pensamientoComputacional-diagramaClasesTallerBicicletas)donde se encuentra el diagrama de clases.
 
 ¿Qué funcionalidades se necesitan?
 
-*registrarDatos
-*vincularBicicleta
-*crearOrden
+*registrarClientes
+*registrarOrden
 *asignarMecanico
-*cambiarMecanico
-*anadirListaTareas
-*añadirRepuestos
-*calcularCostoTotal
-*cambiarEstadoOrden
+*actualizarNombre()
+*obtenerNombre()
+*actualizarIdentificacion()
+*obtenerIdentificaion()
+*actualizarMarca()
+*obtenerMarca()
+*actualizarModelo()
+*obtenerModelo()
+*actualizarTarea()
+*obtenerTarea()
+*actualizarCosto()
+*obtenerCosto()
+*actualizarCantidad()
+*obtenerCantidad()
+*actualizarDescripcion()
+*actualizarFechaIngreso()
+*actualizarEstado()
+*obtenerInformacion()
+*calcularCostoFinal()
+
 
 Descomposición: 
 
 ¿Cómo se distribuyen las funcionalidades?
 
-*Se encuentra en la carpeta model
+*Las funcionalidades se distribuyen entre las clases 
+ del modelo (ubicadas en la ruta (pensamientoComputacional-diagramaClasesTallerBicicletas), donde cada 
+ clase tiene responsabilidades específicas según el diagrama de clases.
