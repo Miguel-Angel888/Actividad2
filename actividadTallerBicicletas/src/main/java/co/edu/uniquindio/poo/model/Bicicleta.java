@@ -16,6 +16,10 @@ public class Bicicleta {
 
     //Constructor
 
+    public Bicicleta(String serial) {
+        this.serial = serial;
+    }
+
     public Bicicleta(String marca, String color, String serial) {
         this.marca = marca;
         this.color = color;

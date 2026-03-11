@@ -92,6 +92,7 @@ public class TallerBicicletas {
                 '}';
     }
     //CRUD Cliente
+
     //Buscar Cliente
     public Cliente buscarCliente(String nombre, String identificacion){
         Cliente cliente = null;
@@ -149,6 +150,7 @@ public class TallerBicicletas {
     }
 
     //CRUD Bicicleta
+
     //Buscar Bicicleta
     public Bicicleta buscarBicicleta(String serial){
         Bicicleta bicicleta = null;
@@ -162,7 +164,23 @@ public class TallerBicicletas {
         return bicicleta;
     }
 
+    //Registrar bicicleta
+    public String registrarBicicleta(String serial){
+        //Verificar que no este registrada
+        for(Bicicleta bicicleta: listaBicicletas){
+            if(bicicleta.getSerial().equalsIgnoreCase(serial)){
+                return "La bicicleta ya se encuentra registrada";
+            }
+        }
+        //registrar la bicicleta
+        Bicicleta bicicleta = new Bicicleta(serial);
+
+        listaBicicletas.add(bicicleta);
+        return "La bicicleta fue registrada exitosamente";
+    }
+
     //CRUD ORDEN SERVICIO
+
     //Crear orden de servicio para una bicicleta especifica
     public String crearOrdenServicioBicicleta(String serial,LocalDate fechaIngreso,String codigo){
         //Comprobar que la bicicelta exista
@@ -182,8 +200,22 @@ public class TallerBicicletas {
         return "Se le ha asignado una orden de servicio a la bicicleta exitosamente";
 
     }
+
     //Registrar orden de servicio
- 
+    public String registrarOrdenServicio(LocalDate fechaIngreso,String codigo){
+        OrdenServicio orden = buscarOrdenServicio(fechaIngreso,codigo);
+        //COmprobar que no exista
+        if(orden != null){
+            return "La orden ya esta registrada";
+        }
+        if(orden==null){
+            orden = new OrdenServicio(codigo, fechaIngreso);
+        }
+        //Registrar orden
+        listaOrdenesServicio.add(orden);
+        return "La orden se ha creado correctamente";
+    }
+
     //Buscar Orden Servicio
     public OrdenServicio buscarOrdenServicio(LocalDate fechaIngreso,String codigo){
         OrdenServicio orden = null;
@@ -195,6 +227,46 @@ public class TallerBicicletas {
             }
         }
         return orden;
+    }
+
+    //Asignar a x orden un mecanico
+    public String asignarMecanicoOrden(String codigo,LocalDate fechaIngreso,String nombre){
+        OrdenServicio orden = buscarOrdenServicio(fechaIngreso, codigo);
+        //Se comprueba que exista la orden
+        if(orden == null){
+            return "No pudo registrarse porque no existe dicha orden";
+        }
+        //Se crea el mecanico
+        Mecanico mecanico = new Mecanico(nombre);
+        //Se le asigna el mecanico a la orden
+        orden.getListaMecanicos().add(mecanico);
+        return "Se ha registrado satisfactoriamente";
+    }
+    //CRUD Mecanico
+    //Registrar mecanico
+    public String registrarMecanico(String nombre){
+
+        //Verificar que no este registrado
+        for(Mecanico mecanicoAux:listaMecanicos){
+            if(mecanicoAux.getNombre().equalsIgnoreCase(nombre)){
+                return "El mecanico ya esta registrado";
+            }
+        }
+        //Se crea el mecanico
+        Mecanico mecanico = new Mecanico(nombre);
+        listaMecanicos.add(mecanico);
+        return "El mecanico se ha creado correctamente";
+    }
+    //Buscar mecanico
+    public Mecanico buscarMecanico(String nombre){
+        Mecanico mecanico = null;
+        for(Mecanico mecanicoAux: listaMecanicos){
+            if(mecanicoAux.getNombre().equalsIgnoreCase(nombre)){
+                mecanico = mecanicoAux;
+                return mecanico;
+            }
+        }
+        return mecanico;
     }
 }
 

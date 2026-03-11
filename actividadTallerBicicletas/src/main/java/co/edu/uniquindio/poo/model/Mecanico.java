@@ -15,6 +15,10 @@ public class Mecanico {
 
     //Consructor
 
+    public Mecanico(String nombre) {
+        this.nombre = nombre;
+    }
+
     public Mecanico(String nombre, String telefono, String salario) {
         this.nombre = nombre;
         this.telefono = telefono;
