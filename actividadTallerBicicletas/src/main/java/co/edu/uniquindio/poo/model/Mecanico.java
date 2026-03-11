@@ -1,5 +1,6 @@
 package co.edu.uniquindio.poo.model;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class Mecanico {
@@ -7,7 +8,8 @@ public class Mecanico {
     //Atributos
     private String nombre;
     private String telefono;
-    private String salario;
+    private double costoManoObra;
+
 
     //Relaciones
     private TallerBicicletas ownedByTallerBicicletas;
@@ -19,10 +21,10 @@ public class Mecanico {
         this.nombre = nombre;
     }
 
-    public Mecanico(String nombre, String telefono, String salario) {
+    public Mecanico(String nombre, String telefono, double costoManoObra) {
         this.nombre = nombre;
         this.telefono = telefono;
-        this.salario = salario;
+        this.costoManoObra = costoManoObra;
         this.ownedByTallerBicicletas = ownedByTallerBicicletas;
         this.listaOrdenesServicio = new ArrayList<>();
 
@@ -42,11 +44,11 @@ public class Mecanico {
         this.telefono = telefono;
     }
 
-    public String getSalario() {
-        return salario;
+    public double getCostoManoObra() {
+        return costoManoObra;
     }
-    public void setSalario(String salario) {
-        this.salario = salario;
+    public void setCostoManoObra(double costoManoObra) {
+        this.costoManoObra = costoManoObra;
     }
 
     public TallerBicicletas getOwnedByTallerBicicletas() {
@@ -68,9 +70,10 @@ public class Mecanico {
         return "Mecanico{" +
                 "nombre='" + nombre + '\'' +
                 ", telefono='" + telefono + '\'' +
-                ", salario='" + salario + '\'' +
+                ", salario='" + costoManoObra + '\'' +
                 ", ownedByTallerBicicletas=" + ownedByTallerBicicletas +
                 ", listaOrdenesServicio=" + listaOrdenesServicio +
                 '}';
     }
+
 }

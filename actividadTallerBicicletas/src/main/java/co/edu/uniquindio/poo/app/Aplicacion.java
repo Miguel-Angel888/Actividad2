@@ -54,8 +54,9 @@ public class Aplicacion {
                     while (!flag) {
                         int numero = Integer.valueOf(JOptionPane.showInputDialog(null, "Introduzca el valor de la funcionalidad que desea utilizar para bicicleta" +
                                 "\n(1).Registrar bicicleta" +
-                                "\n(2)Vincular la bicicleta con el cliente" +
-                                "\n(3).Regresar"));
+                                "\n(2).Vincular la bicicleta con el cliente" +
+                                "\n(3).Asignar bicicleta a orden"+
+                                "\n(4).Regresar"));
                         switch (numero) {
                             case 1:
                                 String serial = JOptionPane.showInputDialog(null, "Ingrese el serial de la bicicleta");
@@ -69,7 +70,12 @@ public class Aplicacion {
                                 mensaje = tallerBicicletas.vincularClienteBicicleta(nombre, identificacion, serialBici);
                                 JOptionPane.showMessageDialog(null, mensaje);
                                 break;
-                            case 3:
+                            case 3:  serial = JOptionPane.showInputDialog(null,"Introduzca el serial de la bicicleta");
+                                    String codigo = JOptionPane.showInputDialog(null, "Introduzca el codigo de la orden ");
+                                     mensaje = tallerBicicletas.asignarOrdenBicicleta(serial,codigo);
+                                    JOptionPane.showMessageDialog(null,mensaje);
+                                    break;
+                                case 4:
                                 flag = true;
                                 break;
                             default:
@@ -77,6 +83,76 @@ public class Aplicacion {
                                 break;
                         }
                     }
+                    break;
+                case 3:
+                    flag = false;
+                    while (!flag) {
+                        int numero = Integer.valueOf(JOptionPane.showInputDialog(null, "Introduzca el valor de la funcionalidad que desea utilizar para orden de servicio" +
+                                "\n(1).Asignar mecanico" +
+                                "\n(2).Calcular costo total" +
+                                "\n(3).Cambiar estado de la orden" +
+                                "\n(4).Registrar orden" +
+                                "\n(5).Regresar"));
+                        switch (numero) {
+                            case 1:
+                                String codigo = JOptionPane.showInputDialog(null, "Introduzca el codigo de la orden ");
+                                String nombre = JOptionPane.showInputDialog(null, "Introduzca el nombre del mecanico");
+                                String mensaje = tallerBicicletas.asignarMecanicoOrden(codigo, nombre);
+                                JOptionPane.showMessageDialog(null, mensaje);
+                                break;
+                            case 2:
+                                break;
+                            case 3:
+                                break;
+                            case 4:
+                                codigo = JOptionPane.showInputDialog(null, "Introduzca el codigo de la orden ");
+                                mensaje = tallerBicicletas.registrarOrdenServicio(codigo);
+                                JOptionPane.showMessageDialog(null, mensaje);
+                                break;
+                            case 5:
+                                flag = true;
+                                break;
+                            default:
+                                JOptionPane.showMessageDialog(null, "Introduzca un numero valido");
+
+                        }
+
+                    }
+                    break;
+                case 4:
+                    flag = false;
+                    while (!flag) {
+                        int numero = Integer.valueOf(JOptionPane.showInputDialog(null, "Introduzca el valor de la funcionalidad que desea utilizar para Mecanico" +
+                                "\n(1).Asignar valor mano Obra" +
+                                "\n(2).Asignar a una orden" +
+                                "\n(3).Regresar"));
+                        switch (numero) {
+                            case 1:
+                                String codigo = JOptionPane.showInputDialog(null, "Introduzca el codigo dela orden");
+                                String nombre = JOptionPane.showInputDialog(null, "Introduzca el nombre del mecanico");
+                                double costo = tallerBicicletas.asignarCostoManoObra(codigo, nombre);
+                                JOptionPane.showMessageDialog(null, "El costo de la mano de obra fue de: " + costo);
+                                break;
+                            case 2:
+                                codigo = JOptionPane.showInputDialog(null, "Introduzca el codigo de la orden ");
+                                nombre = JOptionPane.showInputDialog(null, "Introduzca el nombre del mecanico");
+                                String mensaje = tallerBicicletas.asignarMecanicoOrden(codigo, nombre);
+                                JOptionPane.showMessageDialog(null, mensaje);
+                                break;
+                            case 3:
+                                flag = true;
+                                break;
+                            default:
+                                JOptionPane.showMessageDialog(null, "Introduzca un numero valido");
+                        }
+
+                    }
+                    break;
+                case 5:
+                    flag = true;
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Introduzca un numero valido");
             }
         }
     }

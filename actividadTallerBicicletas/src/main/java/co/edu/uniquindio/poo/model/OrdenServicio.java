@@ -20,9 +20,9 @@ public class OrdenServicio {
     private Cliente cliente;
     private ArrayList<Repuesto> listaRepuestos;
 
-    public OrdenServicio(String codigo, LocalDate fechaIngreso) {
+    public OrdenServicio(String codigo) {
         this.codigo = codigo;
-        this.fechaIngreso = fechaIngreso;
+
     }
 
     public OrdenServicio(String codigo, String descripcion,

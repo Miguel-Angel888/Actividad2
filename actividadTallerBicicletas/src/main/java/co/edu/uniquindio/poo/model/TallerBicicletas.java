@@ -1,5 +1,6 @@
 package co.edu.uniquindio.poo.model;
 
+import javax.swing.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -179,6 +180,23 @@ public class TallerBicicletas {
         return "La bicicleta fue registrada exitosamente";
     }
 
+    //Asignar orden bicicleta
+    public String asignarOrdenBicicleta(String serial,String codigo){
+        OrdenServicio orden = buscarOrdenServicio(codigo);
+        if(orden == null){
+            return "La orden no existe";
+        }
+        Bicicleta bicicleta = buscarBicicleta(serial);
+        if(bicicleta == null){
+            return "La bicicleta no existe";
+        }
+        OrdenServicio orden1 = new OrdenServicio(codigo);
+
+         bicicleta.getListaOrdenesServicio().add(orden1);
+            return "Fueron asignadas correctamente";
+
+    }
+
     //CRUD ORDEN SERVICIO
 
     //Crear orden de servicio para una bicicleta especifica
@@ -190,9 +208,9 @@ public class TallerBicicletas {
                     " que registre la bicicleta para asignarle una orden de servicio";
         }
         //Se registra la orden de servicio
-        registrarOrdenServicio(fechaIngreso,codigo);
+        registrarOrdenServicio(codigo);
         //Busca la orden creada
-        OrdenServicio orden = buscarOrdenServicio(fechaIngreso, codigo);
+        OrdenServicio orden = buscarOrdenServicio( codigo);
         //Asignar la orden de servicio a la bicicleta
        bicicleta.getListaOrdenesServicio().add(orden);
 
@@ -202,26 +220,26 @@ public class TallerBicicletas {
     }
 
     //Registrar orden de servicio
-    public String registrarOrdenServicio(LocalDate fechaIngreso,String codigo){
-        OrdenServicio orden = buscarOrdenServicio(fechaIngreso,codigo);
+    public String registrarOrdenServicio(String codigo){
+        OrdenServicio orden = buscarOrdenServicio(codigo);
         //COmprobar que no exista
         if(orden != null){
             return "La orden ya esta registrada";
         }
-        if(orden==null){
-            orden = new OrdenServicio(codigo, fechaIngreso);
-        }
+        orden = new OrdenServicio(codigo);
+
+
         //Registrar orden
         listaOrdenesServicio.add(orden);
         return "La orden se ha creado correctamente";
     }
 
     //Buscar Orden Servicio
-    public OrdenServicio buscarOrdenServicio(LocalDate fechaIngreso,String codigo){
+    public OrdenServicio buscarOrdenServicio(String codigo){
         OrdenServicio orden = null;
 
         for(OrdenServicio ordenAux: listaOrdenesServicio){
-            if(ordenAux.getFechaIngreso().equals(fechaIngreso) && ordenAux.getCodigo().equalsIgnoreCase(codigo)){
+            if(ordenAux.getCodigo().equalsIgnoreCase(codigo)){
                 orden = ordenAux;
                 return orden;
             }
@@ -230,14 +248,17 @@ public class TallerBicicletas {
     }
 
     //Asignar a x orden un mecanico
-    public String asignarMecanicoOrden(String codigo,LocalDate fechaIngreso,String nombre){
-        OrdenServicio orden = buscarOrdenServicio(fechaIngreso, codigo);
+    public String asignarMecanicoOrden(String codigo,String nombre){
+        OrdenServicio orden = buscarOrdenServicio(codigo);
+        Mecanico mecanico = buscarMecanico(nombre);
         //Se comprueba que exista la orden
         if(orden == null){
             return "No pudo registrarse porque no existe dicha orden";
         }
-        //Se crea el mecanico
-        Mecanico mecanico = new Mecanico(nombre);
+        if(mecanico == null) {
+            return "No pudo completarse porque el mecanico no se encuentra registrado";
+        }
+
         //Se le asigna el mecanico a la orden
         orden.getListaMecanicos().add(mecanico);
         return "Se ha registrado satisfactoriamente";
@@ -268,5 +289,19 @@ public class TallerBicicletas {
         }
         return mecanico;
     }
+
+    //Asiganr costo mano obra
+    public double asignarCostoManoObra(String codigo,String nombre){
+        Mecanico mecanicoEncontrado = buscarMecanico(nombre);
+        if(mecanicoEncontrado == null){
+            registrarMecanico(nombre);
+        }
+        mecanicoEncontrado = buscarMecanico(nombre);
+        double costo = Double.parseDouble(JOptionPane.showInputDialog(null,"Introduzca el valor de la mano de obra"));
+        mecanicoEncontrado.setCostoManoObra(costo);
+        return costo;
+    }
+
+
 }
 
